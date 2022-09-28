@@ -32,6 +32,22 @@ class D {
     return daysShort[this._date.getDay()]
   }
 
+  get date() {
+    return this._date.getDate();
+  }
+
+  get hours() {
+    return this._date.getHours();
+  }
+
+  get mins() {
+    return this._date.getMinutes();
+  }
+
+  get secs() {
+    return this._date.getSeconds();
+  }
+
   get ending() {
     const today = this._date.getDate()
     const nth = function(d) {
@@ -48,7 +64,7 @@ class D {
 
   format(mask = '') {
     if (mask === '') {
-      return `${this.month} ${this.day}, ${this.year}`
+      return `${this.day} ${this.month} ${this.date}, ${this.year}`
     }
   
     const dateComponents = {
@@ -58,7 +74,7 @@ class D {
       'm': this.mon,
       'D': this.day,
       'd': this.dy,
-      // '#' -> 1st (date with ordinal suffix: st, nd, rd or th)
+      '#': this.ending
       // 'H' -> 05 (Hours padded)
       // 'h' -> 5 (Hours)
       // 'I' -> 08 (Minutes padded)
@@ -89,15 +105,21 @@ class D {
 
 }
 
-const date = new D()
-// console.log( date.year )
-// console.log( date.yr )
-// console.log( date.month )
-// console.log( date.mon )
-// console.log( date.day )
-// console.log( date.dy )
-console.log(date.format('M D, Y'))
-console.log (date.ending)
+const date = new D(2020, 09, 10, 5, 6, 27)
+console.log( date.year )    //Full Year   = 2020
+console.log( date.yr )      //Short Year  = 20
+console.log( date.month )   //Full Month  = October
+console.log( date.mon )     //Short Month = Oct
+console.log( date.day )     //Full Day    = Sunday
+console.log( date.dy )      //Short Day   = Sun
+console.log( date.date)     //Date        = 10
+console.log( date.hours)    //Hours       = 5
+console.log( date.mins)     //Minutes     = 6
+console.log( date.secs)     //Seconds     = 27
+
+console.log(date.format())
+console.log(date.format('y/m/d'))
+console.log(date.ending)
 
 
 // List of formatting characters:
