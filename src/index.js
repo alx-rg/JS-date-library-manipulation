@@ -36,16 +36,32 @@ class D {
     return this._date.getDate();
   }
 
+  get datePadded() {
+    return String(this.date).padStart(2, 0)
+  }
+
   get hours() {
     return this._date.getHours();
+  }
+
+  get hoursPadded() {
+    return String(this.hours).padStart(2, 0)
   }
 
   get mins() {
     return this._date.getMinutes();
   }
 
+  get minsPadded() {
+    return String(this.mins).padStart(2, 0)
+  }
+
   get secs() {
     return this._date.getSeconds();
+  }
+
+  get secsPadded() {
+    return String(this.secs).padStart(2, 0)
   }
 
   get ending() {
@@ -64,7 +80,7 @@ class D {
 
   format(mask = '') {
     if (mask === '') {
-      return `${this.day} ${this.month} ${this.date}, ${this.year}`
+      return `${this.year} ${this.month} ${this.datePadded}`
     }
   
     const dateComponents = {
@@ -74,23 +90,22 @@ class D {
       'm': this.mon,
       'D': this.day,
       'd': this.dy,
-      '#': this.ending
-      // 'H' -> 05 (Hours padded)
-      // 'h' -> 5 (Hours)
-      // 'I' -> 08 (Minutes padded)
-      // 'i' -> 8 (Minutes)
-      // 'S' -> 04 (Seconds padded)
-      // 's' -> 4 (Seconds)
+      '#': this.ending,
+      'H': this.hoursPadded,
+      'h': this.hours,
+      'I': this.minsPadded,
+      'i': this.mins,
+      'S': this.secsPadded,
+      's': this.secs
     }
     let dateStr = ''
 
     for (let i = 0; i < mask.length; i += 1) {
       if (dateComponents[mask[i]] !== undefined) {
         dateStr += dateComponents[mask[i]]
-
-    }
-
-
+      } else {
+        dateStr += mask[i]
+      }
   }
   return dateStr
   }
@@ -105,36 +120,34 @@ class D {
 
 }
 
-const date = new D(2020, 09, 10, 5, 6, 27)
-console.log( date.year )    //Full Year   = 2020
-console.log( date.yr )      //Short Year  = 20
-console.log( date.month )   //Full Month  = October
-console.log( date.mon )     //Short Month = Oct
-console.log( date.day )     //Full Day    = Sunday
-console.log( date.dy )      //Short Day   = Sun
-console.log( date.date)     //Date        = 10
-console.log( date.hours)    //Hours       = 5
-console.log( date.mins)     //Minutes     = 6
-console.log( date.secs)     //Seconds     = 27
+console.log("><><><><><><><><><><><><><><><><><><><><><><>")
+console.log("<><><><><><><><>New Date Test<><><><><><><><>")
+const date = new D(2020, 09, 1, 5, 6, 7)
+console.log( date.year )        //Full Year   = 2020
+console.log( date.yr )          //Short Year  = 20
+console.log( date.month )       //Full Month  = October
+console.log( date.mon )         //Short Month = Oct
+console.log( date.day )         //Full Day    = Friday
+console.log( date.dy )          //Short Day   = Fri
+console.log( date.datePadded )  //Date        = 01
+console.log( date.date)         //Date        = 1
+console.log( date.ending)       //DateEnding  = 1st
+console.log( date.hours)        //Hours       = 5
+console.log( date.hoursPadded)  //HoursPadded = 05
+console.log( date.mins)         //Minutes     = 6
+console.log( date.minsPadded)   //MinPadded   = 06
+console.log( date.secs)         //Seconds     = 7
+console.log( date.secsPadded)   //SecPadded   = 07
+console.log("><><><><><><><><><><><><><><><><><><><><><><>")
+console.log("<><><><><><><><>New Date Test<><><><><><><><>")
+const d = new D(2017, 0, 2, 3, 4, 5)
+console.log(d.format())              // 2017 January 02
+console.log(d.format('y/m/d'))       // 17/Jan/2
+console.log(d.format('H:I:S'))       // 03:04:05
+console.log(d.format('h:i:s'))       // 3:4:5
+console.log(d.format('Y-M-D h:I:S')) // 2017-January-02 3:04:05 
+console.log("><><><><><><><><><><><><><><><><><><><><><><>")
 
-console.log(date.format())
-console.log(date.format('y/m/d'))
-console.log(date.ending)
 
-
-// List of formatting characters:
-
-// 'Y' -> 2019 (Year full)
-// 'y' -> 19 (Year short)
-// 'M' -> July (Month full)
-// 'm' -> Jul (Month short)
-// 'D' -> 01 (date padded)
-// 'd' -> 1 (date)
-// '#' -> 1st (date with ordinal suffix: st, nd, rd or th)
-// 'H' -> 05 (Hours padded)
-// 'h' -> 5 (Hours)
-// 'I' -> 08 (Minutes padded)
-// 'i' -> 8 (Minutes)
-// 'S' -> 04 (Seconds padded)
-// 's' -> 4 (Seconds)
-// The format() method should provide an acceptable default formatted date with no parameters.
+// @ts-ignore: Unreachable code error
+// Number(this.date) - Number(date)
