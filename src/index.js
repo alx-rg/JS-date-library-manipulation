@@ -120,34 +120,38 @@ class D {
 
 }
 
-console.log("><><><><><><><><><><><><><><><><><><><><><><>")
-console.log("<><><><><><><><>New Date Test<><><><><><><><>")
-const date = new D(2020, 09, 1, 5, 6, 7)
-console.log( date.year )        //Full Year   = 2020
-console.log( date.yr )          //Short Year  = 20
-console.log( date.month )       //Full Month  = October
-console.log( date.mon )         //Short Month = Oct
-console.log( date.day )         //Full Day    = Friday
-console.log( date.dy )          //Short Day   = Fri
-console.log( date.datePadded )  //Date        = 01
-console.log( date.date)         //Date        = 1
-console.log( date.ending)       //DateEnding  = 1st
-console.log( date.hours)        //Hours       = 5
-console.log( date.hoursPadded)  //HoursPadded = 05
-console.log( date.mins)         //Minutes     = 6
-console.log( date.minsPadded)   //MinPadded   = 06
-console.log( date.secs)         //Seconds     = 7
-console.log( date.secsPadded)   //SecPadded   = 07
-console.log("><><><><><><><><><><><><><><><><><><><><><><>")
-console.log("<><><><><><><><>New Date Test<><><><><><><><>")
-const d = new D(2017, 0, 2, 3, 4, 5)
-console.log(d.format())              // 2017 January 02
-console.log(d.format('y/m/d'))       // 17/Jan/2
-console.log(d.format('H:I:S'))       // 03:04:05
-console.log(d.format('h:i:s'))       // 3:4:5
-console.log(d.format('Y-M-D h:I:S')) // 2017-January-02 3:04:05 
-console.log("><><><><><><><><><><><><><><><><><><><><><><>")
+// console.log("><><><><><><><><><><><><><><><><><><><><><><>")
+// console.log("<><><><><><><><>New Date Test<><><><><><><><>")
+// const date = new D(2020, 09, 1, 5, 6, 7)
+// console.log( date.year )        //Full Year   = 2020
+// console.log( date.yr )          //Short Year  = 20
+// console.log( date.month )       //Full Month  = October
+// console.log( date.mon )         //Short Month = Oct
+// console.log( date.day )         //Full Day    = Friday
+// console.log( date.dy )          //Short Day   = Fri
+// console.log( date.datePadded )  //Date        = 01
+// console.log( date.date)         //Date        = 1
+// console.log( date.ending)       //DateEnding  = 1st
+// console.log( date.hours)        //Hours       = 5
+// console.log( date.hoursPadded)  //HoursPadded = 05
+// console.log( date.mins)         //Minutes     = 6
+// console.log( date.minsPadded)   //MinPadded   = 06
+// console.log( date.secs)         //Seconds     = 7
+// console.log( date.secsPadded)   //SecPadded   = 07
+// console.log("><><><><><><><><><><><><><><><><><><><><><><>")
+// console.log("<><><><><><><><>New Date Test<><><><><><><><>")
+// const d = new D(2017, 0, 2, 3, 4, 5)
+// console.log(d.format())              // 2017 January 02
+// console.log(d.format('y/m/d'))       // 17/Jan/2
+// console.log(d.format('H:I:S'))       // 03:04:05
+// console.log(d.format('h:i:s'))       // 3:4:5
+// console.log(d.format('Y-M-D h:I:S')) // 2017-January-02 3:04:05 
+// console.log("><><><><><><><><><><><><><><><><><><><><><><>")
 
 
 // @ts-ignore: Unreachable code error
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 // Number(this.date) - Number(date)
+
+module.exports = D
