@@ -112,33 +112,49 @@ class D {
 
   when() {
     const now = new Date()    // get todays date
-    const nowDate = now.getDate()
-    const differenceDate = this._date.getDate()
+    const difference = this._date.getTime() - now.getTime()
+    const nowCheck = now.toJSON().substring(0, 9)
+    const difCheck = this._date.toJSON().substring(0, 9)
+    const nowYear = now.getFullYear()
+    const difYear = this._date.getFullYear()
     const nowMonth = now.getMonth()
-    const differenceMonth = this._date.getMonth()
-    const nowYear = now.getYear()
-    const differenceYear = this._date.getYear()
-    const nowCheck = (nowDate + nowMonth + nowYear)
-    const difCheck = (differenceDate + differenceMonth + differenceYear)
+    const difMonth = this._date.getMonth()
+    const nowDate = now.getDate()
+    const difDate = this._date.getDate()
+    console.log(nowYear, difYear)
+    console.log(nowYear - difYear)
+    console.log(nowMonth, difMonth)
+    console.log(nowMonth - difMonth)
+    console.log(nowDate, difDate)
+    console.log(nowDate - difDate)
 
-    console.log('Now Date', nowDate)
-    console.log('Now differenceDate', differenceDate)
-    console.log('Now Month', nowMonth)
-    console.log('Now differenceMonth', differenceMonth)
-    console.log('Now Year', nowYear)
-    console.log('Now differenceYear', differenceYear)
-    console.log(nowCheck - difCheck)
-    console.log(nowCheck)
-    console.log(difCheck)
+    const seconds = difference / 1000 
+    const mins = seconds / 60    
+    const hrs = mins / 60    
+    const days = hrs / 24    
+    const months = days / 30.437
+    console.log('months' , months)
+    console.log('math ceil', Math.ceil(months))
+    const years = months / 12 
+    let displayString = ''
 
-    if (nowCheck === difCheck) {
-      console.log(now, this._date)
-      return "today"
+
+    if ( Math.abs(years) > 1) {
+        const displayYears = Math.floor(years)
+        displayString = years > 1 ? (`${displayYears} years from now`) : (`${Math.abs(displayYears) - 1} years ago`)
+    } else if (years < 1 && (Math.abs(months) > 1)) {
+        const displayMonth = Math.floor(months)
+        displayString = months > 1? (`${displayMonth} months from now`) : (`${Math.abs(displayMonth) - 1} months ago`)
+        // displayString = Math.abs(months) > 1? (``)  
+    } else {
+        const displayDays = Math.ceil(days)
+        displayString = days > 1? (`${displayDays} days from now`) : (`${Math.abs(displayDays) - 1} days ago`)
     }
+    return displayString
   }
 }
 
-const octDate = new D (2022, 9, 2)
+const octDate = new D (2022, 9, 4)
 console.log(octDate.format())
 console.log(octDate.when())
 
