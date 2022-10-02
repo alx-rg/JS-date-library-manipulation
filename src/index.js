@@ -111,33 +111,16 @@ class D {
   }
 
   when() {
-    const now = new Date()    // get todays date
+    const now = new Date()
     const difference = this._date.getTime() - now.getTime()
-    const nowCheck = now.toJSON().substring(0, 9)
-    const difCheck = this._date.toJSON().substring(0, 9)
-    const nowYear = now.getFullYear()
-    const difYear = this._date.getFullYear()
-    const nowMonth = now.getMonth()
-    const difMonth = this._date.getMonth()
-    const nowDate = now.getDate()
-    const difDate = this._date.getDate()
-    console.log(nowYear, difYear)
-    console.log(nowYear - difYear)
-    console.log(nowMonth, difMonth)
-    console.log(nowMonth - difMonth)
-    console.log(nowDate, difDate)
-    console.log(nowDate - difDate)
-
     const seconds = difference / 1000 
     const mins = seconds / 60    
     const hrs = mins / 60    
-    const days = hrs / 24    
+    const days = hrs / 24   
+    console.log(days) 
     const months = days / 30.437
-    console.log('months' , months)
-    console.log('math ceil', Math.ceil(months))
     const years = months / 12 
     let displayString = ''
-
 
     if ( Math.abs(years) > 1) {
         const displayYears = Math.floor(years)
@@ -145,27 +128,17 @@ class D {
     } else if (years < 1 && (Math.abs(months) > 1)) {
         const displayMonth = Math.floor(months)
         displayString = months > 1? (`${displayMonth} months from now`) : (`${Math.abs(displayMonth) - 1} months ago`)
-        // displayString = Math.abs(months) > 1? (``)  
     } else {
         const displayDays = Math.ceil(days)
         displayString = days > 1? (`${displayDays} days from now`) : (`${Math.abs(displayDays) - 1} days ago`)
-    }
+    } 
     return displayString
   }
 }
 
-const octDate = new D (2022, 9, 4)
+const octDate = new D (2022, 9, 1)
 console.log(octDate.format())
 console.log(octDate.when())
-
-  // Take in/ receive an input string
-  // initialize an output string
-  // loop over each character in the inputted string 
-  //  starting with the first character, if recognised (year, month, day)
-  //  append the formated value into the output string 
-  //  if not recognized, pass the character into the output string
-  // once complete, return the output string
-
 
 
 // console.log("><><><><><><><><><><><><><><><><><><><><><><>")
