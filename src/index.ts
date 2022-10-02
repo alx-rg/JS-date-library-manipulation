@@ -3,68 +3,74 @@ const monthsShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Se
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 const daysShort = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
+interface D {
+  _date: Date;
+}
+
 class D {
-  constructor(...args) {
+  constructor(...args: Array< Date | String | Number>) {
+ 
+    /* @ts-ignore: Unreachable code error */
     this._date = new Date (...args)
   }
 
-  get year() {
+  get year(): number {
     return this._date.getFullYear()
   }
 
-  get yr() {
+  get yr(): number {
     return this.year % 100
   }
 
-  get month() {
+  get month():string {
     return months[this._date.getMonth()]
   }
 
-  get mon() {
+  get mon():string {
     return monthsShort[this._date.getMonth()]
   }
 
-  get day() {
+  get day():string {
     return days[this._date.getDay()]
   }
   
-  get dy() {
+  get dy():string {
     return daysShort[this._date.getDay()]
   }
 
-  get date() {
+  get date():number {
     return this._date.getDate();
   }
 
-  get datePadded() {
-    return String(this.date).padStart(2, 0)
+  get datePadded():string {
+    return String(this.date).padStart(2, '0')
   }
 
-  get hours() {
+  get hours():number {
     return this._date.getHours();
   }
 
-  get hoursPadded() {
-    return String(this.hours).padStart(2, 0)
+  get hoursPadded():string {
+    return String(this.hours).padStart(2, '0')
   }
 
-  get mins() {
+  get mins():number {
     return this._date.getMinutes();
   }
 
-  get minsPadded() {
-    return String(this.mins).padStart(2, 0)
+  get minsPadded():string {
+    return String(this.mins).padStart(2, '0')
   }
 
-  get secs() {
+  get secs():number {
     return this._date.getSeconds();
   }
 
-  get secsPadded() {
-    return String(this.secs).padStart(2, 0)
+  get secsPadded():string {
+    return String(this.secs).padStart(2, '0')
   }
 
-  get ending() {
+  get ending():string {
     const today = this._date.getDate()
     const nth = function(d) {
       if (d > 3 && d < 21) return 'th';
@@ -78,8 +84,8 @@ class D {
     return `${today}${nth(today)}`
   }
 
-  format(mask = '') {
-    if (mask === '') {
+  format(mask: string): string {
+    if (!mask) {
       return `${this.year} ${this.month} ${this.datePadded}`
     }
   
@@ -110,7 +116,7 @@ class D {
   return dateStr
   }
 
-  when() {
+  when(): string {
     const now = new Date()
     const difference = this._date.getTime() - now.getTime()
     const seconds = difference / 1000 
@@ -146,3 +152,6 @@ console.log(octDate.when())
 // Number(this.date) - Number(date)
 
 module.exports = D
+
+    /* eslint-disable no-undef */
+    /* eslint-disable @typescript-eslint/no-var-requires */  
