@@ -110,6 +110,38 @@ class D {
   return dateStr
   }
 
+  when() {
+    const now = new Date()    // get todays date
+    const nowDate = now.getDate()
+    const differenceDate = this._date.getDate()
+    const nowMonth = now.getMonth()
+    const differenceMonth = this._date.getMonth()
+    const nowYear = now.getYear()
+    const differenceYear = this._date.getYear()
+    const nowCheck = (nowDate + nowMonth + nowYear)
+    const difCheck = (differenceDate + differenceMonth + differenceYear)
+
+    console.log('Now Date', nowDate)
+    console.log('Now differenceDate', differenceDate)
+    console.log('Now Month', nowMonth)
+    console.log('Now differenceMonth', differenceMonth)
+    console.log('Now Year', nowYear)
+    console.log('Now differenceYear', differenceYear)
+    console.log(nowCheck - difCheck)
+    console.log(nowCheck)
+    console.log(difCheck)
+
+    if (nowCheck === difCheck) {
+      console.log(now, this._date)
+      return "today"
+    }
+  }
+}
+
+const octDate = new D (2022, 9, 2)
+console.log(octDate.format())
+console.log(octDate.when())
+
   // Take in/ receive an input string
   // initialize an output string
   // loop over each character in the inputted string 
@@ -118,7 +150,7 @@ class D {
   //  if not recognized, pass the character into the output string
   // once complete, return the output string
 
-}
+
 
 // console.log("><><><><><><><><><><><><><><><><><><><><><><>")
 // console.log("<><><><><><><><>New Date Test<><><><><><><><>")
