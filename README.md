@@ -55,13 +55,13 @@ dateTesting.secs; // 6
 // Second Padded (string)
 dateTesting.secsPadded; // '06'
 
-// Formatted Date String Examples
+// Examples of some formated dates
 testDate.format("y/m/d"); // '22/Nov/Thu'
 testDate.format("H:I:S"); // '06:07:08'
 testDate.format("h:i:s"); // '6:7:8'
 testDate.format("Y-M-D h:I:S"); // '2022-November-Thursday 6:07:08'
 
-// .when() function returns time difference string from a given date
+// Use the .when() will return the difference in time between two dates
 const mockDate = new Date(2022, 10, 4);
 dateTesting8.when(mockDate); // '16 days from now'
 dateTesting7.when(mockDate); // '7 days ago'

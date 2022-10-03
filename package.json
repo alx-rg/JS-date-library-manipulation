@@ -1,6 +1,6 @@
 {
   "name": "@alxrg/date-maker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Allows you to quickly transform the javascript date to human readable strings",
   "main": "index.js",
   "directories": {
