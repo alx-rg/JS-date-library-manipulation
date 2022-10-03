@@ -143,7 +143,7 @@ class D {
 }
 
 const octDate = new D (2022, 9, 1)
-console.log(octDate.format())
+console.log(octDate.format(null))
 console.log(octDate.when())
 
 // @ts-ignore: Unreachable code error
